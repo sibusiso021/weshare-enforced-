@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ExpenseService {
@@ -20,6 +21,18 @@ public class ExpenseService {
 
     public void loginUser(String email) throws Exception {
         personService.loginUser(email);
+    }
+
+    public List<Expense> getExpensesByEmail(String email){
+        return getAllExpenses().stream().filter(expense -> expense.getPerson().getEmail().equals(email)).collect(Collectors.toList());
+    }
+
+    public  void deleteExpense(Expense expense){
+        List<Expense> expenses = getAllExpenses();
+        boolean deleted = expenses.remove(expense);
+        if(!deleted){
+            throw new IllegalArgumentException("Expense was not deleted" + expense);
+        }
     }
 
     public List<Expense> getAllExpenses() {
