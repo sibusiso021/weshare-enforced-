@@ -1,11 +1,12 @@
 package com.example.workflow.valueobject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-@Component
+@EnableAutoConfiguration
 public class Date {
     private final LocalDate date;
 

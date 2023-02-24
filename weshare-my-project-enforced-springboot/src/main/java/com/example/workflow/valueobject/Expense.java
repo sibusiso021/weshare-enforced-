@@ -1,10 +1,11 @@
 package com.example.workflow.valueobject;
 
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
 
+@EnableAutoConfiguration
 
-@Component
 public class Expense {
     public Person getPerson() {
         return person;

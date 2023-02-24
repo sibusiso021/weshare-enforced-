@@ -23,7 +23,7 @@
     <bpmn:userTask id="add_expense" name="Add Expense">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="date" label="Date" type="string" />
+          <camunda:formField id="date" label="Date" type="date" />
           <camunda:formField id="amount" label="Amount" type="long" />
           <camunda:formField id="description" label="Description" type="string" />
           <camunda:formField id="email" label="Email" type="string" />
@@ -39,21 +39,21 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="new_expesne_process">
-      <bpmndi:BPMNEdge id="Flow_0uult3t_di" bpmnElement="Flow_0uult3t">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="270" y="117" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0gal7zd_di" bpmnElement="Flow_0gal7zd">
-        <di:waypoint x="370" y="117" />
-        <di:waypoint x="430" y="117" />
+      <bpmndi:BPMNEdge id="Flow_1d6ifv5_di" bpmnElement="Flow_1d6ifv5">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="752" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02errwt_di" bpmnElement="Flow_02errwt">
         <di:waypoint x="530" y="117" />
         <di:waypoint x="590" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1d6ifv5_di" bpmnElement="Flow_1d6ifv5">
-        <di:waypoint x="690" y="117" />
-        <di:waypoint x="752" y="117" />
+      <bpmndi:BPMNEdge id="Flow_0gal7zd_di" bpmnElement="Flow_0gal7zd">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uult3t_di" bpmnElement="Flow_0uult3t">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
         <dc:Bounds x="179" y="99" width="36" height="36" />

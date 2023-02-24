@@ -1,6 +1,7 @@
-com\example\workflow\controller\MakePayment.class
+com\example\workflow\delegates\ClaimExpense.class
 com\example\workflow\valueobject\Amount.class
 com\example\workflow\valueobject\Expense.class
+com\example\workflow\controller\ClaimExpense.class
 com\example\workflow\valueobject\Date.class
 com\example\workflow\Application.class
 com\example\workflow\valueobject\Person.class

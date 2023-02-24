@@ -1,6 +1,7 @@
 package com.example.workflow.valueobject;
 
 import lombok.Getter;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
 
 
@@ -8,7 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 
-@Component
+@EnableAutoConfiguration
 public class Person {
     @Getter
     @NotBlank(message = "Email is required")
