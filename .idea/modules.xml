@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/weshare-enforced-.iml" filepath="$PROJECT_DIR$/.idea/weshare-enforced-.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weshare-my-project-enforced-springboot/weshare-my-project-enforced-springboot.iml" filepath="$PROJECT_DIR$/weshare-my-project-enforced-springboot/weshare-my-project-enforced-springboot.iml" />
+    </modules>
+  </component>
+</project>
