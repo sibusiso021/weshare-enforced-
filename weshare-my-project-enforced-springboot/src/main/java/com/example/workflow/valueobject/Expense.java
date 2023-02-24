@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @EnableAutoConfiguration
 
 public class Expense {
+
     public Person getPerson() {
         return person;
     }
@@ -29,6 +30,16 @@ public class Expense {
         return date;
     }
 
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
+    private boolean paid;
     private final Person person;
     private final Amount amount;
     private final Date date;
@@ -40,6 +51,7 @@ public class Expense {
         this.amount = amount;
         this.date = date;
         this.discription = descriptiom;
+        this.paid = false;
     }
 
 
