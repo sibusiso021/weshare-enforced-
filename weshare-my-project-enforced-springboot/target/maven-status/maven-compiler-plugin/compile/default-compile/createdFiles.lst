@@ -1,0 +1,7 @@
+com\example\workflow\valueobject\Date.class
+com\example\workflow\controller\CreateNewExpense.class
+com\example\workflow\controller\MakePayment.class
+com\example\workflow\valueobject\Amount.class
+com\example\workflow\Application.class
+com\example\workflow\valueobject\Person.class
+com\example\workflow\valueobject\Expense.class

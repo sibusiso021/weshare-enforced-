@@ -15,10 +15,12 @@ public class Expense {
     @Autowired
     private final Amount amount;
     @Autowired
-    private final LocalDate date;
+    private final Date date;
 
 
-    public Expense(Person person, String description, Amount amount, LocalDate date) {
+
+
+    public Expense(Person person, String description, Amount amount, Date date) {
         this.person = person;
         this.description = description;
         this.amount = amount;
