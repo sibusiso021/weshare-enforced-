@@ -1,10 +1,10 @@
 package com.example.workflow.valueobject;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 
+@Component
 public class Expense {
     public Person getPerson() {
         return person;
@@ -31,5 +31,5 @@ public class Expense {
         this.discription = descriptiom;
     }
 
-    // getter and setter methods
+
 }

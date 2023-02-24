@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+//I want my delegate to ask the same way as the controller, ex pet that i have to get the values from camunda forms.
 @Service
 public class AddanExpenseDelegate implements JavaDelegate {
 

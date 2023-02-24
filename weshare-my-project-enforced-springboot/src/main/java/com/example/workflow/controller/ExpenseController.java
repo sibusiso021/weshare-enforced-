@@ -30,10 +30,10 @@ public class ExpenseController {
             @RequestParam double amount,
             @RequestParam String date) throws Exception {
 
-        // Check if user is logged in
+        // here i Check if user is logged in
         expenseService.loginUser(email);
 
-        // Create objects for the expense
+        // i was about to create objects for the expense
         Person person = expenseService.getPerson(email);
         Amount expenseAmount = new Amount(amount);
         Date expenseDate = new Date(LocalDate.parse(date));

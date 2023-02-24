@@ -10,7 +10,7 @@ public class Config {
 
     @Bean
     public double myDouble() {
-        return 0.0; // Or any other value you want to return
+        return 0.0;
     }
     @Bean
     public LocalDate localDate() {
