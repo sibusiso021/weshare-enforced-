@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0tg8kfw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.9.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_1gygaod" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" />
+    <bpmn:task id="Activity_0oxkcf3" name="Create an expense">
+      <bpmn:outgoing>Flow_1bwyszz</bpmn:outgoing>
+      <bpmn:outgoing>Flow_19totzh</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1vms1b1" name="Pay an expense">
+      <bpmn:incoming>Flow_087akzx</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="Activity_1a49e8s" name="view expenses">
+      <bpmn:incoming>Flow_19totzh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wqyo5h</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1op2ysd" name="claim an expense/payment request recieved">
+      <bpmn:incoming>Flow_0bv1bge</bpmn:incoming>
+      <bpmn:outgoing>Flow_087akzx</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1efb7vn" name="Send payment request to someone">
+      <bpmn:incoming>Flow_1bwyszz</bpmn:incoming>
+      <bpmn:incoming>Flow_00o26bw</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1bwyszz" sourceRef="Activity_0oxkcf3" targetRef="Activity_1efb7vn" />
+    <bpmn:sequenceFlow id="Flow_19totzh" sourceRef="Activity_0oxkcf3" targetRef="Activity_1a49e8s" />
+    <bpmn:task id="Activity_0vq8w5j" name="Payment Request sent and payment Request Recieved/claims">
+      <bpmn:incoming>Flow_0wqyo5h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bv1bge</bpmn:outgoing>
+      <bpmn:outgoing>Flow_00o26bw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0wqyo5h" sourceRef="Activity_1a49e8s" targetRef="Activity_0vq8w5j" />
+    <bpmn:sequenceFlow id="Flow_0bv1bge" sourceRef="Activity_0vq8w5j" targetRef="Activity_1op2ysd" />
+    <bpmn:sequenceFlow id="Flow_087akzx" sourceRef="Activity_1op2ysd" targetRef="Activity_1vms1b1" />
+    <bpmn:sequenceFlow id="Flow_00o26bw" sourceRef="Activity_0vq8w5j" targetRef="Activity_1efb7vn" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1gygaod">
+      <bpmndi:BPMNEdge id="Flow_1bwyszz_di" bpmnElement="Flow_1bwyszz">
+        <di:waypoint x="310" y="150" />
+        <di:waypoint x="310" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19totzh_di" bpmnElement="Flow_19totzh">
+        <di:waypoint x="360" y="110" />
+        <di:waypoint x="500" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wqyo5h_di" bpmnElement="Flow_0wqyo5h">
+        <di:waypoint x="600" y="110" />
+        <di:waypoint x="740" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bv1bge_di" bpmnElement="Flow_0bv1bge">
+        <di:waypoint x="790" y="150" />
+        <di:waypoint x="790" y="440" />
+        <di:waypoint x="410" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_087akzx_di" bpmnElement="Flow_087akzx">
+        <di:waypoint x="360" y="510" />
+        <di:waypoint x="360" y="570" />
+        <di:waypoint x="780" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00o26bw_di" bpmnElement="Flow_00o26bw">
+        <di:waypoint x="740" y="110" />
+        <di:waypoint x="545" y="110" />
+        <di:waypoint x="545" y="270" />
+        <di:waypoint x="350" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1a49e8s_di" bpmnElement="Activity_1a49e8s">
+        <dc:Bounds x="500" y="70" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0oxkcf3_di" bpmnElement="Activity_0oxkcf3">
+        <dc:Bounds x="260" y="70" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vq8w5j_di" bpmnElement="Activity_0vq8w5j">
+        <dc:Bounds x="740" y="70" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1op2ysd_di" bpmnElement="Activity_1op2ysd">
+        <dc:Bounds x="310" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1efb7vn_di" bpmnElement="Activity_1efb7vn">
+        <dc:Bounds x="250" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vms1b1_di" bpmnElement="Activity_1vms1b1">
+        <dc:Bounds x="780" y="500" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
