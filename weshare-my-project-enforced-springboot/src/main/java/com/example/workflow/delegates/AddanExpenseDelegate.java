@@ -28,7 +28,7 @@ public class AddanExpenseDelegate implements JavaDelegate {
     public void execute(DelegateExecution delegateExecution) throws Exception {
         String email = (String) delegateExecution.getVariable("email");
         String description = (String) delegateExecution.getVariable("description");
-        double amount = Double.parseDouble((String) delegateExecution.getVariable("amount"));
+        double amount = ((Long) delegateExecution.getVariable("amount")).doubleValue();
         String dateStr = (String) delegateExecution.getVariable("date");
         LocalDate date = LocalDate.parse(dateStr);
 
@@ -46,5 +46,7 @@ public class AddanExpenseDelegate implements JavaDelegate {
 
         Expense expense = new Expense(person, expenseAmount, expenseDate, description);
         expenseService.getAllExpenses().add(expense);
+        System.out.println(expense.toString());
+        System.out.println("process is finished");
     }
 }

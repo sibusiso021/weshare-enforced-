@@ -23,7 +23,7 @@
     <bpmn:userTask id="add_expense" name="Add Expense">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="date" label="Date" type="date" />
+          <camunda:formField id="date" label="Date" type="string" />
           <camunda:formField id="amount" label="Amount" type="long" />
           <camunda:formField id="description" label="Description" type="string" />
           <camunda:formField id="email" label="Email" type="string" />

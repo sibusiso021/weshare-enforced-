@@ -11,6 +11,16 @@ public class Expense {
         return person;
     }
 
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "person=" + person +
+                ", amount=" + amount +
+                ", date=" + date +
+                ", discription='" + discription + '\'' +
+                '}';
+    }
+
     public Amount getAmount() {
         return amount;
     }
