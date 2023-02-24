@@ -46,7 +46,9 @@ public class AddanExpenseDelegate implements JavaDelegate {
 
         Expense expense = new Expense(person, expenseAmount, expenseDate, description);
         expenseService.getAllExpenses().add(expense);
-        System.out.println(expense.toString());
+
+        System.out.println(expenseService.getAllExpenses().toString());
+
         System.out.println("process is finished");
     }
 }
