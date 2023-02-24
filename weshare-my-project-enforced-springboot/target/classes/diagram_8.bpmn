@@ -15,7 +15,7 @@
       <bpmn:incoming>Flow_1erv777</bpmn:incoming>
       <bpmn:outgoing>Flow_11qn9fu</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_1r9qun3" name="claim an expense" camunda:class="com.example.workflow.delegates.ClaimExpense">
+    <bpmn:serviceTask id="Activity_1r9qun3" name="claim an expense" camunda:class="com.example.workflow.delegates.PayExpenseDelegate">
       <bpmn:incoming>Flow_11qn9fu</bpmn:incoming>
       <bpmn:outgoing>Flow_1ei2x91</bpmn:outgoing>
     </bpmn:serviceTask>

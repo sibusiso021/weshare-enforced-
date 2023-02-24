@@ -27,13 +27,7 @@ public class ExpenseService {
         return getAllExpenses().stream().filter(expense -> expense.getPerson().getEmail().equals(email)).collect(Collectors.toList());
     }
 
-    public  void deleteExpense(Expense expense){
-        List<Expense> expenses = getAllExpenses();
-        boolean deleted = expenses.remove(expense);
-        if(!deleted){
-            throw new IllegalArgumentException("Expense was not deleted" + expense);
-        }
-    }
+
 
     public List<Expense> getAllExpenses() {
         return expenses;

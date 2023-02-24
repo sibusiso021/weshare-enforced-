@@ -11,24 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class PayExpenseDelegate implements JavaDelegate {
-    private final ExpenseService expenseService;
-    @Autowired
-    public PayExpenseDelegate(ExpenseService expenseService) {
-        this.expenseService = expenseService;
-    }
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        String email = (String) delegateExecution.getVariable("email");
 
-        List<Expense> expensetopay = expenseService.getExpensesByEmail(email);
-        if(expensetopay.isEmpty()){
-            throw new IllegalArgumentException("you have no expense to pay");
-        }
-
-
-
-        expenseService.deleteExpense((Expense) expensetopay);
-        System.out.println("expense deleted");
     }
 }
