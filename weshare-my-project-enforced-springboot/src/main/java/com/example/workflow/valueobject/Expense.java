@@ -5,25 +5,31 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-@Component
 public class Expense {
+    public Person getPerson() {
+        return person;
+    }
 
-    @Autowired
+    public Amount getAmount() {
+        return amount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
     private final Person person;
-    @Autowired
-    private final String description;
-    @Autowired
     private final Amount amount;
-    @Autowired
     private final Date date;
 
+    private final String discription;
 
-
-
-    public Expense(Person person, String description, Amount amount, Date date) {
+    public Expense(Person person, Amount amount, Date date, String descriptiom) {
         this.person = person;
-        this.description = description;
         this.amount = amount;
         this.date = date;
+        this.discription = descriptiom;
     }
+
+    // getter and setter methods
 }

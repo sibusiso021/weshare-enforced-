@@ -13,14 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import javax.xml.crypto.Data;
 
-
 @RestController
 @RequestMapping("/expenses")
 public class ExpenseController {
 
     private final ExpenseService expenseService;
 
-    @Autowired
     public ExpenseController(ExpenseService expenseService) {
         this.expenseService = expenseService;
     }
@@ -36,14 +34,12 @@ public class ExpenseController {
         expenseService.loginUser(email);
 
         // Create objects for the expense
-        Person person = new Person(email);
+        Person person = expenseService.getPerson(email);
         Amount expenseAmount = new Amount(amount);
         Date expenseDate = new Date(LocalDate.parse(date));
 
         // Create the expense and add it to the list
-        Expense expense = new Expense(person, description, expenseAmount, expenseDate);
+        Expense expense = new Expense(person, expenseAmount, expenseDate, description);
         expenseService.getAllExpenses().add(expense);
-
-
     }
 }

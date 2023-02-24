@@ -12,34 +12,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @Service
 public class ExpenseService {
 
-    @Autowired
-    private final Person person;
-    private final Map<String, Person> loggedInUsers = new HashMap<>();
+    private final PersonService personService;
     private final List<Expense> expenses = new ArrayList<>();
 
-    @Autowired
-    public ExpenseService(Person person) {
-        this.person = person;
+    public ExpenseService(PersonService personService) {
+        this.personService = personService;
     }
 
     public void loginUser(String email) throws Exception {
-        if (this.person.getEmail() == email) {
-            loggedInUsers.put(email, person);
-
-
-        }
-
-
+        personService.loginUser(email);
     }
+
     public List<Expense> getAllExpenses() {
         return expenses;
     }
 
-
-
-
+    public Person getPerson(String email) {
+        return personService.getPerson(email);
+    }
 }
