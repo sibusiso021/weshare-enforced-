@@ -24,7 +24,9 @@ public class ExpenseRquestRecieved implements JavaDelegate {
 
         String initiatorEmail = (String) delegateExecution.getVariable("initiatorEmail");
         expenseService.loginUser(initiatorEmail);
-        List<Expense> expenseToPay =  expenseService.getExpensesByEmail(initiatorEmail);
+        Person user = expenseService.getPerson(initiatorEmail);
+
+        List<Expense> expenseToPay =  expenseService.getExpensesToPayFor(user);
 
 
 

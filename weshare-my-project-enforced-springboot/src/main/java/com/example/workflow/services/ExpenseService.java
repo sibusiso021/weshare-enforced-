@@ -1,12 +1,11 @@
 package com.example.workflow.services;
+
 import com.example.workflow.valueobject.Expense;
 import com.example.workflow.valueobject.Person;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,8 +28,6 @@ public class ExpenseService {
         return getAllExpenses().stream().filter(expense -> expense.getPerson().getEmail().equals(email)).collect(Collectors.toList());
     }
 
-
-
     public List<Expense> getAllExpenses() {
         return expenses;
     }
@@ -51,6 +48,7 @@ public class ExpenseService {
             }
         }
     }
+
     public List<Expense> getExpensesToPayFor(Person user) {
         List<Expense> expensesToPayFor = new ArrayList<>();
 
@@ -63,4 +61,12 @@ public class ExpenseService {
         return expensesToPayFor;
     }
 
+    public List<Expense> getExpensesToPayFor(String email) {
+        Person user = personService.getPerson(email);
+        if (user == null) {
+            return new ArrayList<>();
+        }
+
+        return getExpensesToPayFor(user);
+    }
 }
