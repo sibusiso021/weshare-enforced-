@@ -13,7 +13,6 @@
         <camunda:formData>
           <camunda:formField id="initiatorEmail" label="You are not logged in!" type="string" />
         </camunda:formData>
-        <camunda:taskListener class="com.example.workflow.delegates.LoggerEmail" event="complete" id="emaillogger" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1xny07y</bpmn:incoming>
       <bpmn:outgoing>Flow_18nrvjv</bpmn:outgoing>

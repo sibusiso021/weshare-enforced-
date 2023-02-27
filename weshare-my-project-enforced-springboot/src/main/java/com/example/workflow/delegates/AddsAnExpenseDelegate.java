@@ -31,6 +31,7 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
         String dateStr = (String) delegateExecution.getVariable("date");
         LocalDate date = LocalDate.parse(dateStr);
         String paidByEmail = (String) delegateExecution.getVariable("paidByEmail");
+        delegateExecution.setVariable("payerEmail", paidByEmail);
 
         EmailValidator validator = EmailValidator.getInstance();
         if (!validator.isValid(initiatorEmail)) {
@@ -50,6 +51,8 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
 
         Expense expense = new Expense(person, expenseAmount, expenseDate, description, payer);
         expenseService.getAllExpenses().add(expense);
+
+        System.out.println(paidByEmail + " has to pay fo the expense");
 
         System.out.println(expenseService.getAllExpenses().toString());
 
