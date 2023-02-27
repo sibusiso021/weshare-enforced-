@@ -53,6 +53,6 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
 
         System.out.println(expenseService.getAllExpenses().toString());
 
-        System.out.println("Process is finished");
+        System.out.println("Expense Has been Added");
     }
 }

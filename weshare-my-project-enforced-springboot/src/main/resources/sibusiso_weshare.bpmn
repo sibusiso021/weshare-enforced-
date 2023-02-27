@@ -5,11 +5,6 @@
       <bpmn:outgoing>Flow_1xny07y</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1xny07y" sourceRef="StartEvent_1" targetRef="Activity_0nombya" />
-    <bpmn:inclusiveGateway id="Gateway_1f5jbqe">
-      <bpmn:incoming>Flow_18xktsj</bpmn:incoming>
-      <bpmn:outgoing>Flow_08lmx0u</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1rxs6ul</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_08lmx0u" name="View Expenses" sourceRef="Gateway_1f5jbqe" targetRef="Activity_0tezjwr">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${what=='view'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -18,6 +13,7 @@
         <camunda:formData>
           <camunda:formField id="initiatorEmail" label="You are not logged in!" type="string" />
         </camunda:formData>
+        <camunda:taskListener class="com.example.workflow.delegates.LoggerEmail" event="complete" id="emaillogger" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1xny07y</bpmn:incoming>
       <bpmn:outgoing>Flow_18nrvjv</bpmn:outgoing>
@@ -105,16 +101,6 @@
       <bpmn:incoming>Flow_0lmbi1s</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0lmbi1s" sourceRef="Activity_0ytctse" targetRef="Event_061e8tu" />
-    <bpmn:inclusiveGateway id="Gateway_0ozjro0">
-      <bpmn:incoming>Flow_0lvl3wv</bpmn:incoming>
-      <bpmn:outgoing>Flow_1rhtnrs</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1yafp5o</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
-    <bpmn:inclusiveGateway id="Gateway_1xdcglg">
-      <bpmn:incoming>Flow_02b680t</bpmn:incoming>
-      <bpmn:outgoing>Flow_0u35mm6</bpmn:outgoing>
-      <bpmn:outgoing>Flow_012b603</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0u35mm6" name="Pay an expense" sourceRef="Gateway_1xdcglg" targetRef="Activity_0eovi20">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pay== 'yes'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -129,6 +115,21 @@
       <bpmn:incoming>Flow_0u35mm6</bpmn:incoming>
       <bpmn:outgoing>Flow_1kh9sz9</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1f5jbqe">
+      <bpmn:incoming>Flow_18xktsj</bpmn:incoming>
+      <bpmn:outgoing>Flow_08lmx0u</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1rxs6ul</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0ozjro0">
+      <bpmn:incoming>Flow_0lvl3wv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rhtnrs</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1yafp5o</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1xdcglg">
+      <bpmn:incoming>Flow_02b680t</bpmn:incoming>
+      <bpmn:outgoing>Flow_0u35mm6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_012b603</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="weshareprocess">
@@ -221,12 +222,6 @@
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="152" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1q1dise_di" bpmnElement="Gateway_1f5jbqe">
-        <dc:Bounds x="555" y="95" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="564" y="292" width="32" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_096e0xm_di" bpmnElement="Activity_0nombya">
         <dc:Bounds x="250" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -257,14 +252,8 @@
       <bpmndi:BPMNShape id="Activity_1w8m5ku_di" bpmnElement="Activity_0ph76x2">
         <dc:Bounds x="970" y="530" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1wt20x6_di" bpmnElement="Gateway_0ozjro0">
-        <dc:Bounds x="995" y="375" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1wy2a91_di" bpmnElement="Activity_074paaf">
         <dc:Bounds x="1140" y="530" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1nfolbs_di" bpmnElement="Gateway_1xdcglg">
-        <dc:Bounds x="1305" y="535" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1ivcmi0_di" bpmnElement="Event_1ivcmi0">
         <dc:Bounds x="1562" y="422" width="36" height="36" />
@@ -277,6 +266,15 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0j9ysac_di" bpmnElement="Activity_0eovi20">
         <dc:Bounds x="1380" y="410" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_13v0rpo_di" bpmnElement="Gateway_1f5jbqe" isMarkerVisible="true">
+        <dc:Bounds x="555" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ak8ung_di" bpmnElement="Gateway_0ozjro0" isMarkerVisible="true">
+        <dc:Bounds x="995" y="375" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0vrbf8d_di" bpmnElement="Gateway_1xdcglg" isMarkerVisible="true">
+        <dc:Bounds x="1305" y="535" width="50" height="50" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

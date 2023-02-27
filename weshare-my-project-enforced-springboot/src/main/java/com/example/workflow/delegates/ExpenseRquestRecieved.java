@@ -8,6 +8,7 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ExpenseRquestRecieved implements JavaDelegate {
@@ -20,18 +21,25 @@ public class ExpenseRquestRecieved implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
 
+        String email = (String) delegateExecution.getVariable("email");
 
+        expenseService.loginUser(email);
 
-        String paidByEmail = (String) delegateExecution.getVariable("paidByEmail");
-        expenseService.loginUser(paidByEmail);
-        List<Expense> expenseList =  expenseService.getExpensesToPayFor(new Person(paidByEmail));
+        Person person = new Person(email);
+        List<Expense> expensetopay = expenseService.getExpensesToPayFor(person);
 
-        System.out.println("Expenses that you have to pay for");
-        for(Expense expense: expenseList){
-            System.out.println(expense.toString());
+        System.out.println(expensetopay);
+
+        if(expensetopay.isEmpty()){
+            System.out.println("you have no expense to pay");
+        }else{
+            System.out.println("These are the expenses you have to pay");
+            for(Expense expense: expensetopay){
+                System.out.println(expense.toString());
+            }
         }
 
-        System.out.println("expense request recieved delegate class");
+
 
 
 
