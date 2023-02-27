@@ -1,0 +1,37 @@
+package com.example.workflow.delegates;
+
+import com.example.workflow.services.ExpenseService;
+import com.example.workflow.valueobject.Expense;
+import com.example.workflow.valueobject.Person;
+import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.delegate.JavaDelegate;
+
+import java.util.List;
+
+public class ExpenseRquestRecieved implements JavaDelegate {
+    private final ExpenseService expenseService;
+
+    public ExpenseRquestRecieved(ExpenseService expenseService) {
+        this.expenseService = expenseService;
+    }
+
+    @Override
+    public void execute(DelegateExecution delegateExecution) throws Exception {
+
+
+
+        String email = (String) delegateExecution.getVariable("email");
+        expenseService.loginUser(email);
+        List<Expense> expenseList =  expenseService.getExpensesToPayFor(new Person(email));
+
+        System.out.println("Expenses that you have to pay for0");
+        for(Expense expense: expenseList){
+            System.out.println(expense.toString());
+        }
+
+        System.out.println("expense request recieved delegate class");
+
+
+
+    }
+}

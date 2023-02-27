@@ -13,42 +13,46 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-//I want my delegate to ask the same way as the controller, ex pet that i have to get the values from camunda forms.
 @Service
-public class AddanExpenseDelegate implements JavaDelegate {
+public class AddsAnExpenseDelegate implements JavaDelegate {
 
     private final ExpenseService expenseService;
 
     @Autowired
-    public AddanExpenseDelegate(ExpenseService expenseService) {
+    public AddsAnExpenseDelegate(ExpenseService expenseService) {
         this.expenseService = expenseService;
     }
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        String email = (String) delegateExecution.getVariable("email");
+        String initiatorEmail = (String) delegateExecution.getVariable("initiatorEmail");
         String description = (String) delegateExecution.getVariable("description");
         double amount = ((Long) delegateExecution.getVariable("amount")).doubleValue();
         String dateStr = (String) delegateExecution.getVariable("date");
         LocalDate date = LocalDate.parse(dateStr);
+        String paidByEmail = (String) delegateExecution.getVariable("paidByEmail");
 
-        // validate email
         EmailValidator validator = EmailValidator.getInstance();
-        if (!validator.isValid(email)) {
-            throw new IllegalArgumentException("Invalid email address: " + email);
+        if (!validator.isValid(initiatorEmail)) {
+            throw new IllegalArgumentException("Invalid email address: " + initiatorEmail);
         }
 
-        expenseService.loginUser(email);
+        if (initiatorEmail.equals(paidByEmail)) {
+            throw new IllegalArgumentException("The person who added the expense cannot be the one who pays for it.");
+        }
 
-        Person person = new Person(email);
+        expenseService.loginUser(initiatorEmail);
+
+        Person person = new Person(initiatorEmail);
+        Person payer = new Person(paidByEmail);
         Amount expenseAmount = new Amount(amount);
         Date expenseDate = new Date(date);
 
-        Expense expense = new Expense(person, expenseAmount, expenseDate, description);
+        Expense expense = new Expense(person, expenseAmount, expenseDate, description, payer);
         expenseService.getAllExpenses().add(expense);
 
         System.out.println(expenseService.getAllExpenses().toString());
 
-        System.out.println("process is finished");
+        System.out.println("Process is finished");
     }
 }

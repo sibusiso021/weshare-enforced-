@@ -49,4 +49,17 @@ public class ExpenseService {
             }
         }
     }
+    public List<Expense> getExpensesToPayFor(Person user) {
+        List<Expense> allExpenses = getAllExpenses();
+        List<Expense> expensesToPayFor = new ArrayList<>();
+
+        for (Expense expense : allExpenses) {
+            if (expense.getPayer().equals(user) && !expense.getPerson().equals(user)) {
+                expensesToPayFor.add(expense);
+            }
+        }
+
+        return expensesToPayFor;
+    }
+
 }

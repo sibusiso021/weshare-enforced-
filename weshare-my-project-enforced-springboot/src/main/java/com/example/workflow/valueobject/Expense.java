@@ -1,25 +1,28 @@
 package com.example.workflow.valueobject;
 
-
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Component;
 
 @EnableAutoConfiguration
-
 public class Expense {
+    private final Person person;
+    private final Amount amount;
+    private final Date date;
+    private final String description;
+    private Person payer;
+
+    private boolean paid;
+
+    public Expense(Person person, Amount amount, Date date, String description, Person payer) {
+        this.person = person;
+        this.amount = amount;
+        this.date = date;
+        this.description = description;
+        this.payer = null;
+        this.paid = false;
+    }
 
     public Person getPerson() {
         return person;
-    }
-
-    @Override
-    public String toString() {
-        return "Expense{" +
-                "person=" + person +
-                ", amount=" + amount +
-                ", date=" + date +
-                ", discription='" + discription + '\'' +
-                '}';
     }
 
     public Amount getAmount() {
@@ -30,6 +33,9 @@ public class Expense {
         return date;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
     public boolean isPaid() {
         return paid;
@@ -39,20 +45,23 @@ public class Expense {
         this.paid = paid;
     }
 
-    private boolean paid;
-    private final Person person;
-    private final Amount amount;
-    private final Date date;
-
-    private final String discription;
-
-    public Expense(Person person, Amount amount, Date date, String descriptiom) {
-        this.person = person;
-        this.amount = amount;
-        this.date = date;
-        this.discription = descriptiom;
-        this.paid = false;
+    public Person getPayer() {
+        return payer;
     }
 
+    public void setPayer(Person payer) {
+        this.payer = payer;
+    }
 
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "person=" + person +
+                ", amount=" + amount +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", payer=" + payer +
+                ", paid=" + paid +
+                '}';
+    }
 }
