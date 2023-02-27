@@ -69,6 +69,7 @@
     <bpmn:userTask id="Activity_1iwfh9o" name="claim the expense">
       <bpmn:incoming>Flow_1s2snea</bpmn:incoming>
       <bpmn:outgoing>Flow_0p8ovkr</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1gflqat</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="Activity_1xy0r11" name="Add Expenses">
       <bpmn:extensionElements>
@@ -83,6 +84,10 @@
       <bpmn:outgoing>Flow_1wp82he</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1wp82he" sourceRef="Activity_1xy0r11" targetRef="Activity_1ux65nl" />
+    <bpmn:sequenceFlow id="Flow_1gflqat" sourceRef="Activity_1iwfh9o" targetRef="Activity_0kwo3ge" />
+    <bpmn:serviceTask id="Activity_0kwo3ge" name="claim an expense" camunda:class="com.example.workflow.delegates.ClaimAnExpense">
+      <bpmn:incoming>Flow_1gflqat</bpmn:incoming>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="weshareprocess">
@@ -112,9 +117,9 @@
       <bpmndi:BPMNEdge id="Flow_1s2snea_di" bpmnElement="Flow_1s2snea">
         <di:waypoint x="580" y="235" />
         <di:waypoint x="580" y="80" />
-        <di:waypoint x="800" y="80" />
+        <di:waypoint x="750" y="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="648" y="53" width="74" height="14" />
+          <dc:Bounds x="624" y="53" width="74" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1xny07y_di" bpmnElement="Flow_1xny07y">
@@ -130,9 +135,9 @@
         <di:waypoint x="1132" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0p8ovkr_di" bpmnElement="Flow_0p8ovkr">
-        <di:waypoint x="900" y="80" />
-        <di:waypoint x="1080" y="80" />
-        <di:waypoint x="1080" y="260" />
+        <di:waypoint x="850" y="80" />
+        <di:waypoint x="1090" y="80" />
+        <di:waypoint x="1090" y="260" />
         <di:waypoint x="1132" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ibus3i_di" bpmnElement="Flow_0ibus3i">
@@ -154,6 +159,10 @@
       <bpmndi:BPMNEdge id="Flow_18xktsj_di" bpmnElement="Flow_18xktsj">
         <di:waypoint x="520" y="260" />
         <di:waypoint x="555" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gflqat_di" bpmnElement="Flow_1gflqat">
+        <di:waypoint x="850" y="80" />
+        <di:waypoint x="1000" y="80" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="152" y="242" width="36" height="36" />
@@ -186,7 +195,10 @@
         <dc:Bounds x="420" y="220" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rtmzwb_di" bpmnElement="Activity_1iwfh9o">
-        <dc:Bounds x="800" y="40" width="100" height="80" />
+        <dc:Bounds x="750" y="40" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15e2yf6_di" bpmnElement="Activity_0kwo3ge">
+        <dc:Bounds x="1000" y="40" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

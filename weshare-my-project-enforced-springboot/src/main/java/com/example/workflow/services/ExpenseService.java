@@ -37,6 +37,10 @@ public class ExpenseService {
         return personService.getPerson(email);
     }
 
+    public void claimExpense(String email){
+        payExpenseByEmail(email);
+    }
+
     public void payExpenseByEmail(String email){
         for(Expense expense : expenses){
             if(expense.getPerson().getEmail().equals(email)){
