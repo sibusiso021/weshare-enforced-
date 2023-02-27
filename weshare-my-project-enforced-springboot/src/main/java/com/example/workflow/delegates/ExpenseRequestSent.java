@@ -24,7 +24,7 @@ public class ExpenseRequestSent implements JavaDelegate {
         String initiatorEmail = (String) delegateExecution.getVariable("initiatorEmail");
         expenseService.loginUser(initiatorEmail);
         List<Expense> expenseList =  expenseService.getExpensesByEmail(initiatorEmail);
-        System.out.println("Alll expenses for" + initiatorEmail + ":");
+        System.out.println("All expenses for" + initiatorEmail + " :");
 
         for (Expense expense : expenseList){
             System.out.println(expense.toString());

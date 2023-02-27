@@ -1,8 +1,12 @@
+com\example\workflow\delegates\HomeDelegate.class
 com\example\workflow\valueobject\Amount.class
 com\example\workflow\valueobject\Expense.class
 com\example\workflow\controller\ClaimExpense.class
 com\example\workflow\valueobject\Date.class
 com\example\workflow\delegates\PayExpenseDelegate.class
 com\example\workflow\Application.class
-com\example\workflow\valueobject\Person.class
 com\example\workflow\delegates\ViewExpenseDelegate.class
+com\example\workflow\delegates\AddsAnExpenseDelegate.class
+com\example\workflow\delegates\ExpenseRquestRecieved.class
+com\example\workflow\delegates\ExpenseRequestSent.class
+com\example\workflow\valueobject\Person.class

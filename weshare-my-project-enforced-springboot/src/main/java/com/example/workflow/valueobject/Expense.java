@@ -17,7 +17,7 @@ public class Expense {
         this.amount = amount;
         this.date = date;
         this.description = description;
-        this.payer = null;
+        this.payer = payer;
         this.paid = false;
     }
 

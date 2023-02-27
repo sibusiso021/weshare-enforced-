@@ -22,11 +22,11 @@ public class ExpenseRquestRecieved implements JavaDelegate {
 
 
 
-        String email = (String) delegateExecution.getVariable("email");
-        expenseService.loginUser(email);
-        List<Expense> expenseList =  expenseService.getExpensesToPayFor(new Person(email));
+        String paidByEmail = (String) delegateExecution.getVariable("paidByEmail");
+        expenseService.loginUser(paidByEmail);
+        List<Expense> expenseList =  expenseService.getExpensesToPayFor(new Person(paidByEmail));
 
-        System.out.println("Expenses that you have to pay for0");
+        System.out.println("Expenses that you have to pay for");
         for(Expense expense: expenseList){
             System.out.println(expense.toString());
         }
