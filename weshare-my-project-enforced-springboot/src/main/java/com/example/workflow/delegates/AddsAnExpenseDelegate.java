@@ -62,12 +62,5 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
 
         System.out.println("Expense has been added");
     }
-//    <script cam-script type="text/form-script">
-//            var email = camForm.variableManager.variableValue('initiatorEmail');
-//    var validator = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
-//
-//  if (!validator.test(email)) {
-//        throw new Error("Invalid email address: " + email);
-//    }
-//</script>
+
 }
