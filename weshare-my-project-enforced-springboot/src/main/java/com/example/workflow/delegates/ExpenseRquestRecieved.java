@@ -29,7 +29,7 @@ public class ExpenseRquestRecieved implements JavaDelegate {
         List<Expense> expenseToPay =  expenseService.getExpensesToPayFor(user);
 
 
-
+        System.out.println(user);
 
         System.out.println(expenseToPay);
 
