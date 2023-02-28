@@ -12,6 +12,9 @@ public class Date {
 
     @Autowired
     public Date(LocalDate date) {
+        if (date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Cannot add an expense for a past date.");
+        }
         this.date = date;
     }
 

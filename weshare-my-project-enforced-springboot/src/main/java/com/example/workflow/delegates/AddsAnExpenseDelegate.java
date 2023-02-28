@@ -42,6 +42,10 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
             throw new IllegalArgumentException("The person who added the expense cannot be the one who pays for it.");
         }
 
+        if (date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Cannot add an expense for a past date.");
+        }
+
         expenseService.loginUser(initiatorEmail);
 
         Person person = new Person(initiatorEmail);
@@ -52,10 +56,10 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
         Expense expense = new Expense(person, expenseAmount, expenseDate, description, payer);
         expenseService.getAllExpenses().add(expense);
 
-        System.out.println(paidByEmail + " has to pay fo the expense");
+        System.out.println(paidByEmail + " has to pay for the expense");
 
         System.out.println(expenseService.getAllExpenses().toString());
 
-        System.out.println("Expense Has been Added");
+        System.out.println("Expense has been added");
     }
 }
