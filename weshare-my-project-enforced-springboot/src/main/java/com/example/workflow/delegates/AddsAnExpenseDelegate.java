@@ -62,5 +62,5 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
 
         System.out.println("Expense has been added");
     }
-
+///^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
 }
