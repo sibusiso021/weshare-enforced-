@@ -37,6 +37,9 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
         if (!validator.isValid(initiatorEmail)) {
             throw new IllegalArgumentException("Invalid email address: " + initiatorEmail);
         }
+        if (!validator.isValid(initiatorEmail)) {
+            throw new IllegalArgumentException("Invalid email address: " + initiatorEmail);
+        }
 
         if (initiatorEmail.equals(paidByEmail)) {
             throw new IllegalArgumentException("The person who added the expense cannot be the one who pays for it.");
@@ -62,5 +65,5 @@ public class AddsAnExpenseDelegate implements JavaDelegate {
 
         System.out.println("Expense has been added");
     }
-///^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+
 }

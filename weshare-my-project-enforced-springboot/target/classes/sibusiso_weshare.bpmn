@@ -11,11 +11,7 @@
     <bpmn:userTask id="Activity_0nombya" name="Log in">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="initiatorEmail" label="You are not logged in!" type="string">
-            <camunda:validation>
-              <camunda:constraint name="ValidEmail" config="&#60;script cam-script type=&#34;text/form-script&#34;&#62;             var email = camForm.variableManager.variableValue(&#39;initiatorEmail&#39;);     var validator = new RegExp(&#39;^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$&#39;);    if (!validator.test(email)) {         throw new Error(&#34;Invalid email address: &#34; + email);     } &#60;/script&#62;" />
-            </camunda:validation>
-          </camunda:formField>
+          <camunda:formField id="initiatorEmail" label="You are not logged in!" type="string" defaultValue="StudentName@wethinkcode.co.za" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1xny07y</bpmn:incoming>

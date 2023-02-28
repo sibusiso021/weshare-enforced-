@@ -11,7 +11,7 @@
     <bpmn:userTask id="Activity_0nombya" name="Log in">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="initiatorEmail" label="You are not logged in!" type="string" />
+          <camunda:formField id="initiatorEmail" label="You are not logged in!" type="string" defaultValue="StudentName@wethinkcode.co.za" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1xny07y</bpmn:incoming>
